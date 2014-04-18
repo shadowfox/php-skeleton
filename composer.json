@@ -1,0 +1,13 @@
+{
+    "name": "me/skeleton",
+    "description": "A simple php skeleton",
+    "require": {
+        "php": ">=5.4.0",
+        "klein/klein": "dev-master",
+        "twig/twig": "1.15.x",
+        "j4mie/paris": "1.4.x"
+    },
+    "autoload": {
+        "psr-4": {"MyApp\\": "src/"}
+    }
+}
