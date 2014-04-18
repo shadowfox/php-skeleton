@@ -8,6 +8,11 @@ $routes = [];
 
 // Sqlite configuration
 ORM::configure('sqlite:' . ROOT_PATH . '/database.db');
+// MySQL configuration
+//ORM::configure('mysql:host=localhost;dbname=database');
+//ORM::configure('username', 'xx');
+//ORM::configure('password', 'xx');
+//ORM::configure('driver_options', array(PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES utf8'));
 
 $router = new \Klein\Klein();
 $request = getKleinRequest();
