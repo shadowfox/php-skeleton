@@ -1,4 +1,5 @@
 <?php
+define('APP_ENV', !empty($_SERVER['APP_ENV']) ? $_SERVER['APP_ENV'] : 'production');
 define('APP_PATH', ROOT_PATH . 'src');
 
 require_once __DIR__ . '/vendor/autoload.php';
@@ -10,9 +11,10 @@ $routes = [];
 ORM::configure('sqlite:' . ROOT_PATH . '/database.db');
 // MySQL configuration
 //ORM::configure('mysql:host=localhost;dbname=database');
-//ORM::configure('username', 'xx');
-//ORM::configure('password', 'xx');
+//ORM::configure('username', '');
+//ORM::configure('password', '');
 //ORM::configure('driver_options', array(PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES utf8'));
+ORM::configure('return_result_sets', true);
 
 $router = new \Klein\Klein();
 $request = getKleinRequest();
@@ -41,6 +43,13 @@ $router->respond(function ($request, $response, $service, $app) use ($router) {
         $twig = new Twig_Environment($loader, [
             'cache' => ROOT_PATH . '/cache/',
         ]);
+
+        // Enable some helpful things for development
+        if (APP_ENV === 'development') {
+            $twig->enableDebug();
+            $twig->enableAutoReload();
+            $twig->addExtension(new Twig_Extension_Debug());
+        }
 
         return $twig;
     });
