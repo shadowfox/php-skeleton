@@ -44,6 +44,10 @@ $router->respond(function ($request, $response, $service, $app) use ($router) {
             'cache' => ROOT_PATH . '/cache/',
         ]);
 
+        $twig->addExtension(new \MyApp\TwigExtensionGlobals([
+
+        ]));
+
         // Enable some helpful things for development
         if (APP_ENV === 'development') {
             $twig->enableDebug();
