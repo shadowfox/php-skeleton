@@ -5,7 +5,7 @@ define('APP_PATH', ROOT_PATH . 'src');
 require_once __DIR__ . '/vendor/autoload.php';
 
 // Routes to load
-$routes = [];
+$routes = ['example'];
 
 // Sqlite configuration
 ORM::configure('sqlite:' . ROOT_PATH . '/database.db');
@@ -39,7 +39,7 @@ function getKleinRequest() {
 $router->respond(function ($request, $response, $service, $app) use ($router) {
     // Hook up twig
     $app->register('twig', function() {
-        $loader = new Twig_Loader_Filesystem(APP_PATH . '/templates/');
+        $loader = new Twig_Loader_Filesystem(APP_PATH . '/Templates/');
         $twig = new Twig_Environment($loader, [
             'cache' => ROOT_PATH . '/cache/',
         ]);
@@ -69,7 +69,7 @@ $router->respond(function ($request, $response, $service, $app) use ($router) {
 
 // Load the routes
 foreach ($routes as $route) {
-    require_once APP_PATH . '/routes/' . $route . '.php';
+    require_once APP_PATH . '/Routes/' . $route . '.php';
 }
 
 // Show an error template on any HTTP error
