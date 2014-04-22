@@ -1,0 +1,7 @@
+# Example .htaccess file for route handling
+# Actual Apache configuration should be used instead of .htaccess
+
+RewriteEngine On
+RewriteBase /path/to/app
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^ index.php [L]
