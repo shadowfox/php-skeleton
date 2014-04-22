@@ -1,5 +1,5 @@
 <?php
-define('APP_ENV', !empty($_SERVER['APP_ENV']) ? $_SERVER['APP_ENV'] : 'production');
+define('APP_ENV', getenv('APP_ENV') ?: 'production');
 define('APP_PATH', ROOT_PATH . 'src');
 
 require_once __DIR__ . '/vendor/autoload.php';
