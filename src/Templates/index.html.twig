@@ -1,0 +1,15 @@
+{% extends "base.html.twig" %}
+{% block title %}Example page{% endblock %}
+{% block content %}
+<p>
+  One record: {{ record }}
+</p>
+
+<ul>
+  {% for record in many_records %}
+    <li>{{ record }}</li>
+  {% else %}
+    <li>No records</li>
+  {% endfor %}
+</ul>
+{% endblock %}
